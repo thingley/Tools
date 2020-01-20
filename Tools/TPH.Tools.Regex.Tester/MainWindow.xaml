@@ -5,8 +5,24 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TPH.Tools.Regex.Tester"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
+        Title="Regex - Tester" Height="450" Width="800">
+	<Border BorderThickness="10">
+		<StackPanel>
+			<Label x:Name="lblSearchText">Text</Label>
+			<TextBox x:Name="txtSearchText" Text="{Binding SearchText}"></TextBox>
+			<Label x:Name="lblRegex" Margin="0 10 0 0">Regex</Label>
+			<TextBox x:Name="txtRegex" Text="{Binding Regex}"></TextBox>
+			<Label x:Name="Operations" Margin="0 10 0 0">Operations</Label>
+			<Grid>
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="Auto"></ColumnDefinition>
+					<ColumnDefinition Width="*"></ColumnDefinition>
+				</Grid.ColumnDefinitions>
 
-    </Grid>
+				<Button x:Name="btnMatch" Click="btnMatch_Click">Match</Button>
+			</Grid>
+
+			<CheckBox x:Name="chkIsMatch" Margin="0 10 0 0" IsChecked="{Binding IsMatch}"></CheckBox>
+		</StackPanel>
+	</Border>
 </Window>

@@ -20,9 +20,19 @@ namespace TPH.Tools.Regex.Tester
 	/// </summary>
 	public partial class MainWindow : Window
 	{
+		private RegexViewModel _rvm;
+
 		public MainWindow()
 		{
 			InitializeComponent();
+
+			_rvm = new RegexViewModel();
+			this.DataContext = _rvm;
+		}
+
+		private void btnMatch_Click(object sender, RoutedEventArgs e)
+		{
+			_rvm.TestIsMatch();
 		}
 	}
 }

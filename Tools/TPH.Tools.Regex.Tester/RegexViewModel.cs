@@ -29,11 +29,10 @@ namespace TPH.Tools.Regex.Tester
 
 		public bool? IsMatch
 		{
-			get
+			private get
 			{
 				return _isMatch;
 			}
-			//todo: make this private
 			set
 			{
 				_isMatch = value;

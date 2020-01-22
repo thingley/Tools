@@ -5,7 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TPH.Tools.Regex.Tester"
         mc:Ignorable="d"
-        Title="Regex - Tester" Height="450" Width="800">
+        Title="Regex - Tester"
+		Height="450"
+		Width="800"
+		WindowStartupLocation="CenterScreen">
 	<Border BorderThickness="10">
 		<StackPanel>
 			<Label x:Name="lblSearchText">Text</Label>
@@ -19,10 +22,10 @@
 					<ColumnDefinition Width="*"></ColumnDefinition>
 				</Grid.ColumnDefinitions>
 
-				<Button x:Name="btnMatch" Click="btnMatch_Click">Match</Button>
+				<Button x:Name="btnMatch" Click="btnMatch_Click" Grid.Row="0" Grid.Column="0">Match</Button>
 			</Grid>
 
-			<CheckBox x:Name="chkIsMatch" Margin="0 10 0 0" IsChecked="{Binding IsMatch}"></CheckBox>
+			<CheckBox x:Name="chkIsMatch" Margin="0 10 0 0" IsChecked="{Binding IsMatch}">Is Match</CheckBox>
 		</StackPanel>
 	</Border>
 </Window>

@@ -4,6 +4,7 @@ using System.Text;
 
 using TPH.Tools.Shared.BaseClasses;
 
+using System.ComponentModel;
 using rx = System.Text.RegularExpressions;
 
 namespace TPH.Tools.Regex.Tester
@@ -47,7 +48,7 @@ namespace TPH.Tools.Regex.Tester
 		public void TestIsMatch()
 		{
 			rx.Regex r = new rx.Regex(this.Regex);
-			_isMatch = r.IsMatch(this.SearchText);
+			IsMatch = r.IsMatch(this.SearchText);
 		}
 
 		#endregion

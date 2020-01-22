@@ -11,9 +11,10 @@ namespace TPH.Tools.Shared.BaseClasses
 	{
 		public event PropertyChangedEventHandler PropertyChanged;
 
-		protected void NotifyPropertyChanged([CallerMemberName] String propertyName = "")
+		public void NotifyPropertyChanged([CallerMemberName] string propertyName = "")
 		{
 			PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
 		}
 	}
 }
+;

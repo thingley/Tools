@@ -10,22 +10,47 @@
 		Width="800"
 		WindowStartupLocation="CenterScreen">
 	<Border BorderThickness="10">
-		<StackPanel>
-			<Label x:Name="lblSearchText">Text</Label>
-			<TextBox x:Name="txtSearchText" Text="{Binding Path=SearchText}"></TextBox>
-			<Label x:Name="lblRegex" Margin="0 10 0 0">Regex</Label>
-			<TextBox x:Name="txtRegex" Text="{Binding Path=Regex}"></TextBox>
-			<Label x:Name="Operations" Margin="0 10 0 0">Operations</Label>
-			<Grid>
-				<Grid.ColumnDefinitions>
-					<ColumnDefinition Width="Auto"></ColumnDefinition>
-					<ColumnDefinition Width="*"></ColumnDefinition>
-				</Grid.ColumnDefinitions>
+		<Grid>
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="Auto"></ColumnDefinition>
+				<ColumnDefinition Width="*"></ColumnDefinition>
+			</Grid.ColumnDefinitions>
+			<Grid.RowDefinitions>
+				<RowDefinition Height="200"></RowDefinition>	<!-- Text (to be searched) -->
+				<RowDefinition Height="Auto"></RowDefinition>	<!-- Regex -->
+				<RowDefinition Height="10"></RowDefinition>		<!-- Space between Regex and Match button -->
+				<RowDefinition Height="Auto"></RowDefinition>	<!-- Match button -->
+				<RowDefinition Height="Auto"></RowDefinition>	<!-- Is Match result -->
+			</Grid.RowDefinitions>
 
-				<Button x:Name="btnMatch" Click="btnMatch_Click" Grid.Row="0" Grid.Column="0">Match</Button>
-			</Grid>
+			<Label x:Name="lblSearchText" Grid.Row="0" Grid.Column="0">Text</Label>
+			<TextBox x:Name="txtSearchText"
+					 TextWrapping="Wrap"
+					 AcceptsReturn="True"
+					 AcceptsTab="True"
+					 Grid.Row="0"
+					 Grid.Column="1"
+					 VerticalScrollBarVisibility="Auto"
+					 Text="{Binding Path=SearchText}">
+			</TextBox>
 
-			<CheckBox x:Name="chkIsMatch" Margin="0 10 0 0" IsChecked="{Binding Path=IsMatch, Mode=OneWay}" IsEnabled="False">Is Match</CheckBox>
-		</StackPanel>
+			<Label x:Name="lblRegex" Grid.Row="1" Grid.Column="0">Regex</Label>
+			<TextBox x:Name="txtRegex" Grid.Row="1" Grid.Column="1" Text="{Binding Path=Regex}"></TextBox>
+
+			<Button x:Name="btnMatch"
+					Grid.Row="3"
+					Grid.Column="0"
+					Grid.ColumnSpan="2"
+					Click="btnMatch_Click" Margin="0 10 0 0">Match</Button>
+
+			<Label x:Name="lblIsMatch" Grid.Row="4" Grid.Column="0">Is Match</Label>
+			<CheckBox x:Name="chkIsMatch"
+					  Grid.Row="4"
+					  Grid.Column="1"
+					  VerticalAlignment="Center"
+					  IsEnabled="False"
+					  IsChecked="{Binding Path=IsMatch, Mode=OneWay}">
+			</CheckBox>
+		</Grid>
 	</Border>
 </Window>

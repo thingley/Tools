@@ -40,6 +40,11 @@ namespace TPH.Tools.Regex.Tester
 			}
 		}
 
+		public string[] Captures
+		{
+			get { return new string[] {"aaa", "bbb", "ccc" }; }
+		}
+
 		#endregion
 
 		#region Public Methods

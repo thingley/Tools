@@ -32,7 +32,7 @@ namespace TPH.Tools.Regex.Tester
 
 		private void btnMatch_Click(object sender, RoutedEventArgs e)
 		{
-			_rvm.TestIsMatch();
+			_rvm.Match();
 		}
 	}
 }

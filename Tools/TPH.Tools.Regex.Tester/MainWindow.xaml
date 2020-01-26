@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:TPH.Tools.Regex.Tester"
         mc:Ignorable="d"
         Title="Regex - Tester"
-		Height="450"
+		Height="600"
 		Width="800"
 		WindowStartupLocation="CenterScreen">
 	<Border BorderThickness="10">
@@ -20,7 +20,8 @@
 				<RowDefinition Height="Auto"></RowDefinition>	<!-- Regex -->
 				<RowDefinition Height="10"></RowDefinition>		<!-- Space between Regex and Match button -->
 				<RowDefinition Height="Auto"></RowDefinition>	<!-- Match button -->
-				<RowDefinition Height="Auto"></RowDefinition>	<!-- Is Match result -->
+				<RowDefinition Height="Auto"></RowDefinition>	<!-- Success -->
+				<RowDefinition Height="100"></RowDefinition>	<!-- Matches -->
 			</Grid.RowDefinitions>
 
 			<Label x:Name="lblSearchText" Grid.Row="0" Grid.Column="0">Text</Label>
@@ -30,12 +31,12 @@
 					 AcceptsTab="True"
 					 Grid.Row="0"
 					 Grid.Column="1"
-					 VerticalScrollBarVisibility="Auto"
-					 Text="{Binding Path=SearchText}">
+					 ScrollViewer.VerticalScrollBarVisibility="Auto"
+					 Text="{Binding Path=SearchText, Mode=TwoWay}">
 			</TextBox>
 
 			<Label x:Name="lblRegex" Grid.Row="1" Grid.Column="0">Regex</Label>
-			<TextBox x:Name="txtRegex" Grid.Row="1" Grid.Column="1" Text="{Binding Path=Regex}"></TextBox>
+			<TextBox x:Name="txtRegex" Grid.Row="1" Grid.Column="1" Text="{Binding Path=SearchRegex, Mode=TwoWay}"></TextBox>
 
 			<Button x:Name="btnMatch"
 					Grid.Row="3"
@@ -44,13 +45,21 @@
 					Click="btnMatch_Click" Margin="0 10 0 0">Match</Button>
 
 			<Label x:Name="lblIsMatch" Grid.Row="4" Grid.Column="0">Is Match</Label>
-			<CheckBox x:Name="chkIsMatch"
+			<CheckBox x:Name="chkSuccess"
 					  Grid.Row="4"
 					  Grid.Column="1"
 					  VerticalAlignment="Center"
 					  IsEnabled="False"
-					  IsChecked="{Binding Path=IsMatch, Mode=OneWay}">
+					  IsChecked="{Binding Path=Success, Mode=OneWay}">
 			</CheckBox>
+
+			<Label x:Name="lblMatches" Grid.Row="5" Grid.Column="0">Matches</Label>
+			<ListBox x:Name="lbMatches"
+					 Grid.Row="5"
+					 Grid.Column="1"
+					 ScrollViewer.VerticalScrollBarVisibility="Auto"
+					 ItemsSource="{Binding Path=Matches, Mode=OneWay}">
+			</ListBox>
 		</Grid>
 	</Border>
 </Window>

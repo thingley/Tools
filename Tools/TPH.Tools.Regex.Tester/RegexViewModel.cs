@@ -5,6 +5,7 @@ using System.Text;
 using TPH.Tools.Shared.BaseClasses;
 
 using System.ComponentModel;
+using System.Linq;
 using rx = System.Text.RegularExpressions;
 
 namespace TPH.Tools.Regex.Tester
@@ -13,49 +14,94 @@ namespace TPH.Tools.Regex.Tester
 	{
 		#region Private Data Members
 
-		private bool? _isMatch;
+		private string _searchText;
+		private string _searchRegex;
+
+		private bool? _success;
+		private IEnumerable<string> _matches;
+		private string _error;
 
 		#endregion
 
-		#region Read-Write Properties
+		#region Properties
 
-		public string Regex { get; set; }
-
-		public string SearchText { get; set; }
-
-		#endregion
-
-		#region Read-Only Properties
-
-		public bool? IsMatch
+		public string SearchText
 		{
-			private get
-			{
-				return _isMatch;
-			}
+			get { return _searchText; }
 			set
 			{
-				_isMatch = value;
+				_searchText = value;
 				NotifyPropertyChanged();
 			}
 		}
 
-		public string[] Captures
+		public string SearchRegex
 		{
-			get { return new string[] {"aaa", "bbb", "ccc" }; }
+			get { return _searchRegex; }
+			set
+			{
+				_searchRegex = value;
+				NotifyPropertyChanged();
+			}
+		}
+
+		public bool? Success
+		{
+			private get { return _success; }
+			set
+			{
+				_success = value;
+				NotifyPropertyChanged();
+			}
+		}
+
+		public IEnumerable<string> Matches
+		{
+			get { return _matches; }
+			set
+			{
+				_matches = value;
+				NotifyPropertyChanged();
+			}
+		}
+
+		public string Error
+		{
+			get { return _error; }
+			set
+			{
+				_error = value;
+				NotifyPropertyChanged();
+			}
 		}
 
 		#endregion
 
 		#region Public Methods
 
-		public void TestIsMatch()
+		public void Match()
 		{
-			rx.Regex r = new rx.Regex(this.Regex);
-			IsMatch = r.IsMatch(this.SearchText);
+			bool? success = null;
+			IEnumerable<string> matches = null;
+			string error = string.Empty;
+
+			if (string.IsNullOrEmpty(SearchText))
+				error = "Search text must be specified!";
+			else if (string.IsNullOrEmpty(SearchRegex))
+				error = "Search regex must be specified!";
+			else
+			{
+				rx.Regex r = new rx.Regex(SearchRegex);
+
+				success = r.IsMatch(SearchText);
+				matches = r.Matches(SearchText).Select<rx.Match, string>(x => x.Value);
+			}
+
+			Success = success;
+			Matches = matches;
+			Error = error;
 		}
 
 		#endregion
-
 	}
 }

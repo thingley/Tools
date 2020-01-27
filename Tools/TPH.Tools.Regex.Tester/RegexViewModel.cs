@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-using TPH.Tools.Shared.BaseClasses;
+using TPH.Tools.Common.BaseClasses;
 
 using System.ComponentModel;
 using System.Linq;
@@ -20,6 +20,8 @@ namespace TPH.Tools.Regex.Tester
 		private bool? _success;
 		private IEnumerable<string> _matches;
 		private string _error;
+
+		private RelayCommand _matchCommand;
 
 		#endregion
 
@@ -75,31 +77,41 @@ namespace TPH.Tools.Regex.Tester
 			}
 		}
 
+		public RelayCommand MatchCommand
+		{
+			get { return _matchCommand; }
+			private set { _matchCommand = value; }
+		}
+
+		#endregion
+
+		#region Constructor(s)
+
+		public RegexViewModel()
+		{
+			MatchCommand = new RelayCommand(CanMatch, Match);
+		}
+
 		#endregion
 
 		#region Public Methods
 
 		public void Match()
 		{
-			bool? success = null;
-			IEnumerable<string> matches = null;
-			string error = string.Empty;
+			rx.Regex r = new rx.Regex(SearchRegex);
 
+			Success = r.IsMatch(SearchText);
+			Matches = r.Matches(SearchText).Select<rx.Match, string>(x => x.Value);
+		}
+
+		public bool CanMatch()
+		{
 			if (string.IsNullOrEmpty(SearchText))
-				error = "Search text must be specified!";
+				return false;
 			else if (string.IsNullOrEmpty(SearchRegex))
-				error = "Search regex must be specified!";
+				return false;
 			else
-			{
-				rx.Regex r = new rx.Regex(SearchRegex);
-
-				success = r.IsMatch(SearchText);
-				matches = r.Matches(SearchText).Select<rx.Match, string>(x => x.Value);
-			}
-
-			Success = success;
-			Matches = matches;
-			Error = error;
+				return true;
 		}
 
 		#endregion

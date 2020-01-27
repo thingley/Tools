@@ -7,7 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\TPH.Tools.Shared.BaseClasses\TPH.Tools.Shared.BaseClasses.csproj" />
+    <ProjectReference Include="..\TPH.Tools.Common.BaseClasses\TPH.Tools.Common.BaseClasses.csproj" />
   </ItemGroup>
 
 </Project>

@@ -42,7 +42,7 @@
 					Grid.Row="3"
 					Grid.Column="0"
 					Grid.ColumnSpan="2"
-					Click="btnMatch_Click" Margin="0 10 0 0">Match</Button>
+					Command="{Binding MatchCommand}">Match</Button>
 
 			<Label x:Name="lblIsMatch" Grid.Row="4" Grid.Column="0">Is Match</Label>
 			<CheckBox x:Name="chkSuccess"

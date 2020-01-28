@@ -21,7 +21,7 @@
 				<RowDefinition Height="10"></RowDefinition>		<!-- Space between Regex and Match button -->
 				<RowDefinition Height="Auto"></RowDefinition>	<!-- Match button -->
 				<RowDefinition Height="Auto"></RowDefinition>	<!-- Success -->
-				<RowDefinition Height="100" ></RowDefinition>	<!-- Matches -->
+				<RowDefinition Height="*" ></RowDefinition>	<!-- Matches -->
 				<RowDefinition Height="Auto"></RowDefinition>	<!-- Error -->
 			</Grid.RowDefinitions>
 
@@ -67,9 +67,9 @@
 
 			<Label x:Name="lblError" Grid.Row="6" Grid.Column="0">Error</Label>
 			<TextBox x:Name="txtError"
-						 Grid.Row="6"
-						 Grid.Column="1"
-						 Text="{Binding Path=Error, Mode=OneWay}"></TextBox>
+					 Grid.Row="6"
+					 Grid.Column="1"
+					 Text="{Binding Path=Error, Mode=OneWay}"></TextBox>
 		</Grid>
 	</Border>
 </Window>

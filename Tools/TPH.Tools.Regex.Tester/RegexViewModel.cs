@@ -98,10 +98,19 @@ namespace TPH.Tools.Regex.Tester
 
 		public void Match()
 		{
-			rx.Regex r = new rx.Regex(SearchRegex);
-
-			Success = r.IsMatch(SearchText);
-			Matches = r.Matches(SearchText).Select<rx.Match, string>(x => x.Value);
+			try
+			{
+				rx.Regex r = new rx.Regex(SearchRegex);
+				Success = r.IsMatch(SearchText);
+				Matches = r.Matches(SearchText).Select<rx.Match, string>(x => x.Value);
+				Error = string.Empty;
+			}
+			catch (Exception ex)
+			{
+				Success = null;
+				Matches = null;
+				Error = ex.Message;
+			}
 		}
 
 		public bool CanMatch()

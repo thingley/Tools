@@ -65,11 +65,10 @@
 					 ItemsSource="{Binding Path=Matches, Mode=OneWay}">
 			</ListBox>
 
-			<Label x:Name="lblError" Grid.Row="6" Grid.Column="0">Error</Label>
-			<TextBox x:Name="txtError"
-					 Grid.Row="6"
-					 Grid.Column="1"
-					 Text="{Binding Path=Error, Mode=OneWay}"></TextBox>
+			<TextBlock x:Name="txtError"
+					   Grid.Row="6"
+					   Grid.Column="1"
+					   Text="{Binding Path=Error, Mode=OneWay}"></TextBlock>
 		</Grid>
 	</Border>
 </Window>

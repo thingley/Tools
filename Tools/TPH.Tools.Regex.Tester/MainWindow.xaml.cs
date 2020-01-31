@@ -29,10 +29,5 @@ namespace TPH.Tools.Regex.Tester
 			_rvm = new RegexViewModel();
 			this.DataContext = _rvm;
 		}
-
-		private void btnMatch_Click(object sender, RoutedEventArgs e)
-		{
-			_rvm.Match();
-		}
 	}
 }

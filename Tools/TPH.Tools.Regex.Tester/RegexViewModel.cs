@@ -14,8 +14,7 @@ namespace TPH.Tools.Regex.Tester
 	{
 		#region Private Data Members
 
-		private string _searchText;
-		private string _searchRegex;
+		private RegexModel _model;
 
 		private bool? _success;
 		private IEnumerable<string> _matches;
@@ -29,20 +28,20 @@ namespace TPH.Tools.Regex.Tester
 
 		public string SearchText
 		{
-			get { return _searchText; }
+			get { return _model.SearchText; }
 			set
 			{
-				_searchText = value;
+				_model.SearchText = value;
 				NotifyPropertyChanged();
 			}
 		}
 
 		public string SearchRegex
 		{
-			get { return _searchRegex; }
+			get { return _model.SearchRegex; }
 			set
 			{
-				_searchRegex = value;
+				_model.SearchRegex = value;
 				NotifyPropertyChanged();
 			}
 		}
@@ -89,6 +88,7 @@ namespace TPH.Tools.Regex.Tester
 
 		public RegexViewModel()
 		{
+			_model = new RegexModel();
 			MatchCommand = new RelayCommand(CanMatch, Match);
 		}
 
@@ -100,9 +100,8 @@ namespace TPH.Tools.Regex.Tester
 		{
 			try
 			{
-				rx.Regex r = new rx.Regex(SearchRegex);
-				Success = r.IsMatch(SearchText);
-				Matches = r.Matches(SearchText).Select<rx.Match, string>(x => x.Value);
+				Success = _model.IsMatch;
+				Matches = _model.GetMatches.Select<rx.Match, string>(x => x.Value);
 				Error = string.Empty;
 			}
 			catch (Exception ex)

@@ -101,7 +101,7 @@ namespace TPH.Tools.Regex.Tester
 			try
 			{
 				Success = _model.IsMatch;
-				Matches = _model.GetMatches.Select<rx.Match, string>(x => x.Value);
+				Matches = _model.GetMatches.Select(x => x.Value);
 				Error = string.Empty;
 			}
 			catch (Exception ex)

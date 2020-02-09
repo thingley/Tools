@@ -1,0 +1,86 @@
+﻿<Window x:Class="TPH.Tools.Regex.DatabaseSearch.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TPH.Tools.Regex.DatabaseSearch"
+        mc:Ignorable="d"
+        Title="Database Search"
+		Height="600"
+		Width="800"
+		WindowStartupLocation="CenterScreen">
+    <Border BorderThickness="10">
+		<StackPanel>
+			<TextBlock FontSize="20">Connection Details</TextBlock>
+
+			<TextBlock Margin="0 5 0 0">Server Instance</TextBlock>
+			<TextBox x:Name="txtServerInstance"
+					 Text="{Binding Path=ServerInstance, Mode=TwoWay}"></TextBox>
+
+			<TextBlock Margin="0 5 0 0">Use Windows Authentication</TextBlock>
+			<CheckBox x:Name="chkUseWindowAuthentication"
+					  IsChecked="{Binding Path=UseWindowsAuthentication, Mode=TwoWay}"></CheckBox>
+
+			<TextBlock Margin="0 5 0 0">Username</TextBlock>
+			<TextBox x:Name="txtUsername"
+					 Text="{Binding Path=Username, Mode=TwoWay}"></TextBox>
+
+			<TextBlock Margin="0 5 0 0">Password</TextBlock>
+			<TextBox x:Name="txtPassword"
+					 Text="{Binding Path=Password, Mode=TwoWay}"></TextBox>
+
+			<TextBlock Margin="0 5 0 0">Database</TextBlock>
+			<TextBox x:Name="txtDatabase"
+					 Text="{Binding Path=Database, Mode=TwoWay}"></TextBox>
+
+			<TextBlock Margin="0 5 0 0">Connection String</TextBlock>
+			<TextBox x:Name="txtConnectionString"
+					 Text="{Binding Path=ConnectionString, Mode=OneWay}"
+					 IsEnabled="False"></TextBox>
+
+			<TextBlock Margin="0 5 0 0"
+					   FontSize="20">Search Criteria</TextBlock>
+
+			<TextBlock Margin="0 5 0 0">SQL Object Type</TextBlock>
+			<ComboBox x:Name="cmbSQLObjectType"
+					  ItemsSource="{Binding Path=SQLCodeObjectTypeModelCollection}"
+					  DisplayMemberPath="TypeDescription"
+					  SelectedItem="{Binding Path=SelectedSQLCodeObjectTypeModel}">
+			</ComboBox>
+
+			<TextBlock Margin="0 5 0 0">Schema Regex</TextBlock>
+			<TextBox x:Name="txtSchemaRegex"
+					 Text="{Binding Path=SearchSchemaRegex, Mode=TwoWay}"></TextBox>
+
+			<TextBlock Margin="0 5 0 0">Name Regex</TextBlock>
+			<TextBox x:Name="txtNameRegex"
+					 Text="{Binding Path=SearchNameRegex, Mode=TwoWay}"></TextBox>
+
+			<TextBlock Margin="0 5 0 0">Code Regex</TextBlock>
+			<TextBox x:Name="txtCodeRegex"
+					 Text="{Binding Path=SearchCodeRegex}"></TextBox>
+
+			<TextBlock Margin="0 5 0 0"
+					   FontSize="20">Results</TextBlock>
+
+			<Button	x:Name="butSearch">Search</Button>
+
+			<Grid>
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="Auto"></ColumnDefinition>
+				</Grid.ColumnDefinitions>
+				<Grid.RowDefinitions>
+					<RowDefinition Height="Auto"></RowDefinition>
+					<RowDefinition Height="Auto"></RowDefinition>
+				</Grid.RowDefinitions>
+
+				<ListView x:Name="lstResults"
+						  Grid.Row="0"
+						  Grid.Column="0"></ListView>
+				<TextBlock x:Name="tbError"
+						   Grid.Row="1"
+						   Grid.Column="0"></TextBlock>
+			</Grid>
+		</StackPanel>
+    </Border>
+</Window>

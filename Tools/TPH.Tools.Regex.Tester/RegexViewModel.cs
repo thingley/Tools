@@ -96,7 +96,7 @@ namespace TPH.Tools.Regex.Tester
 
 		#region Public Methods
 
-		public void Match()
+		public void Match(object parameter)
 		{
 			try
 			{
@@ -112,7 +112,7 @@ namespace TPH.Tools.Regex.Tester
 			}
 		}
 
-		public bool CanMatch()
+		public bool CanMatch(object parameter)
 		{
 			if (string.IsNullOrEmpty(SearchText))
 				return false;

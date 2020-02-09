@@ -4,12 +4,14 @@ using System.Text;
 
 using rx = System.Text.RegularExpressions;
 
+using TPH.Tools.Common.BaseClasses;
+
 namespace TPH.Tools.Regex.Tester
 {
-	public class RegexModel
+	public class RegexModel : BaseModel
 	{
 		public string SearchText { get; set; }
-		
+
 		public string SearchRegex { get; set; }
 
 		public bool IsMatch

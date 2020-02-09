@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TPH.Tools.Regex.Tester", "T
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TPH.Tools.Common.BaseClasses", "TPH.Tools.Common.BaseClasses\TPH.Tools.Common.BaseClasses.csproj", "{E7970380-6635-4394-BE15-8C69E8FC48CB}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TPH.Tools.Regex.DatabaseSearch", "TPH.Tools.Regex.DatabaseSearch\TPH.Tools.Regex.DatabaseSearch.csproj", "{16275BDC-59B1-42D7-A79E-4B03181BBA87}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{E7970380-6635-4394-BE15-8C69E8FC48CB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E7970380-6635-4394-BE15-8C69E8FC48CB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E7970380-6635-4394-BE15-8C69E8FC48CB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{16275BDC-59B1-42D7-A79E-4B03181BBA87}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{16275BDC-59B1-42D7-A79E-4B03181BBA87}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{16275BDC-59B1-42D7-A79E-4B03181BBA87}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{16275BDC-59B1-42D7-A79E-4B03181BBA87}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

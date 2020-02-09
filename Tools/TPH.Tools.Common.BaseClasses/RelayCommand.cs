@@ -14,10 +14,10 @@ namespace TPH.Tools.Common.BaseClasses
 			remove { CommandManager.RequerySuggested -= value; }
 		}
 
-		private Func<bool> _canExecute;
-		private Action _execute;
+		private Predicate<object> _canExecute;
+		private Action<object> _execute;
 
-		public RelayCommand (Func<bool> canExecute, Action execute)
+		public RelayCommand (Predicate<object> canExecute, Action<object> execute)
 		{
 			_canExecute = canExecute;
 			_execute = execute;
@@ -25,12 +25,12 @@ namespace TPH.Tools.Common.BaseClasses
 
 		public bool CanExecute(object parameter)
 		{
-			return _canExecute();
+			return _canExecute?.Invoke(parameter) ?? true;
 		}
 
 		public void Execute(object parameter)
 		{
-			_execute();
+			_execute?.Invoke(parameter);
 		}
 	}
 }
